@@ -6,6 +6,5 @@ RUN apt-get update && apt-get install -y git  # Needed to install git packages f
 COPY . .
 RUN pip install -r requirements.txt
 
-
 ENTRYPOINT ["python"]
 CMD ["app.py"]

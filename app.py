@@ -33,7 +33,6 @@ def get_prediction():
 	review = msg['review']
 	try:
 		prediction = predictor.predict(review)
-		# prediction = p.predict(review)
 		return prediction
 	except Exception as e:
 		return str(e), 500
