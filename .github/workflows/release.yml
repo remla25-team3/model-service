@@ -32,5 +32,5 @@ jobs:
       - name: Upload package artifact
         uses: actions/upload-artifact@v4
         with:
-          name: model-service:${{ env.version }}
+          name: model-service-${{ env.version }}
           path: dist/
