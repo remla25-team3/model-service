@@ -7,8 +7,9 @@ It is to be queried by `app-service` to pass model predictions to the front-end.
 
 - [x] Contains a pre-trained model for restaurant review sentiment prediction
 - [ ] Integrates `lib-ml` for query pre-processing
-- [ ] Automatic versioning based on Git version tag
-- [ ] Automatic artifact release through a GitHub Actions workflow
+- [x] Automatic versioning based on Git version tag
+- [x] Automatic artifact release through a GitHub Actions workflow
+- [x] Unit tests are run automatically on each push through another workflow
 
 ## API usage
 
