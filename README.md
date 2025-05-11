@@ -5,16 +5,15 @@ It is to be queried by `app-service` to pass model predictions to the front-end.
 
 ## Features
 
-- [x] Contains a pre-trained model for restaurant review sentiment prediction
-- [ ] Integrates `lib-ml` for query pre-processing
-- [x] Automatic versioning based on Git version tag
-- [x] Automatic artifact release through a GitHub Actions workflow
-- [x] Unit tests are run automatically on each push through another workflow
+- Contains a pre-trained model for restaurant review sentiment prediction
+- Integrates `lib-ml` for query pre-processing
+- Automatic artifact release through a GitHub Actions workflow
+- Unit tests are run automatically on each push through another workflow
 
 ## API usage
 
-`model-service` exposes a REST API on port 8080 (_todo: configure DNS name and port in ENV variable_).
-The following endpoints are available:
+`model-service` exposes a REST API on port 5000 (_todo: configure DNS name and port in ENV variable_).
+The following endpoint is available:
 
 ### `POST`
 
