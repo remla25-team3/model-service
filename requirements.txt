@@ -1,8 +1,9 @@
 Flask==2.3.3
 flasgger==0.9.7.1
 scikit-learn==1.6.1
+numpy==1.26.4
 
-libversion @ git+https://github.com/remla25-team3/lib-version@v1.0.0    # Should be changed to @main or @latest once lib-version is updated
-# libml @ git+https://github.com/remla25-team3/lib-ml                   # Should be added once lib-ml is ready
+libversion @ git+https://github.com/remla25-team3/lib-version@v1.0.0
+lib-ml-remla-team3 @ git+https://github.com/remla25-team3/lib-ml@v0.2.0
 
 .   # Import packages inside this project

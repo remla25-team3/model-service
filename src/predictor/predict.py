@@ -1,17 +1,17 @@
+import numpy as np
 import joblib
-from importlib import resources
-from . import models
+from urllib.request import urlopen
+from lib_ml.preprocessing import preprocess_text
 
 class ReviewSentimentPredictor:
     def __init__(self):
-        # Load trained models to retrieve predictions from
-        dummy_model = (resources.files(models) / 'dummy_model.pkl')
-        with dummy_model.open('rb') as f:
-            self.prediction_model = joblib.load(f)
+        # Load trained model to generate predictions with
+        model_file = urlopen("https://github.com/remla25-team3/model-training/raw/refs/heads/main/model_training/data/sentiment_model.pkl")
+        self.prediction_model = joblib.load(model_file)
 
-        sentiments = (resources.files(models) / 'c1_BoW_Sentiment_Model.pkl')
-        with sentiments.open('rb') as f:
-            self.sentiment_model = joblib.load(f)
+        # Sentiments model to transform string inputs into numbers
+        sentiments_file = urlopen("https://github.com/remla25-team3/model-training/raw/refs/heads/main/model_training/data/c1_BoW_Sentiment_Model.pkl")
+        self.sentiment_model = joblib.load(sentiments_file)
 
     def predict(self, user_input: str):
         """
@@ -28,8 +28,9 @@ class ReviewSentimentPredictor:
         if user_input == '':
             raise ValueError('Input should not be empty')
 
-        # TODO: This is pre-processing and should be handled in lib-ml. Included here temporarily for initial testing.
-        X = self.sentiment_model.transform([user_input]).toarray()
+        preprocessed = [preprocess_text(user_input)]
+        transformed = self.sentiment_model.transform(preprocessed).toarray()
+        X = np.array(transformed, dtype=object).reshape(1, -1) # Apply lib-ml preprocessing
         predictions = self.prediction_model.predict(X)
 
         if len(predictions) == 0:
