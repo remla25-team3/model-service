@@ -48,8 +48,8 @@ jobs:
             platforms: linux/amd64,linux/arm64
             push: false
             tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
-            cache-from: type=gha
-            cache-to: type=gha,mode=max
+            cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
+            cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
 
         - name: Build and push Docker image on workflow_dispatch
           if: github.event_name == 'workflow_dispatch'
@@ -59,8 +59,8 @@ jobs:
             platforms: linux/amd64,linux/arm64
             push: ${{ github.event.inputs.push }}
             tags: ghcr.io/${{ github.repository }}:${{ github.event.inputs.version }}
-            cache-from: type=gha
-            cache-to: type=gha,mode=max
+            cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
+            cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
 
         - name: Build and push Docker image on release
           if: github.event_name == 'release'
@@ -70,5 +70,5 @@ jobs:
             platforms: linux/amd64,linux/arm64
             push: true
             tags: ghcr.io/${{ github.repository }}:${{ github.event.release.tag_name }}
-            cache-from: type=gha
-            cache-to: type=gha,mode=max
+            cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
+            cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
