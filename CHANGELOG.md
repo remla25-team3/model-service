@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/remla25-team3/model-service/compare/v0.1.0...v0.2.0) (2025-05-18)
+
+
+### Features
+
+* multi architecture images ([#7](https://github.com/remla25-team3/model-service/issues/7)) ([9d20e87](https://github.com/remla25-team3/model-service/commit/9d20e87b5471831b2d2a5b61b79e4ff2d7f1ca78))
+
 ## 0.1.0 (2025-05-12)
 
 
