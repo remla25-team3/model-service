@@ -6,11 +6,17 @@ from lib_ml.preprocessing import preprocess_text
 class ReviewSentimentPredictor:
     def __init__(self):
         # Load trained model to generate predictions with
-        model_file = urlopen("https://github.com/remla25-team3/model-training/raw/refs/heads/main/model_training/data/sentiment_model.pkl")
+        model_file = urlopen(
+            'https://github.com/remla25-team3/model-training/raw/refs/heads/main' +
+            '/model_training/models/sentiment_model.pkl'
+        )
         self.prediction_model = joblib.load(model_file)
 
         # Sentiments model to transform string inputs into numbers
-        sentiments_file = urlopen("https://github.com/remla25-team3/model-training/raw/refs/heads/main/model_training/data/c1_BoW_Sentiment_Model.pkl")
+        sentiments_file = urlopen(
+            'https://github.com/remla25-team3/model-training/raw/refs/heads/main' +
+            '/model_training/models/bow_sentiment_model.pkl'
+        )
         self.sentiment_model = joblib.load(sentiments_file)
 
     def predict(self, user_input: str):
