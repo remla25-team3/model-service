@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/remla25-team3/model-service/compare/v0.2.0...v0.3.0) (2025-06-21)
+
+
+### Features
+
+* REST API, Docker, predict logic ([#11](https://github.com/remla25-team3/model-service/issues/11)) ([ab0cd6e](https://github.com/remla25-team3/model-service/commit/ab0cd6ee9fd16c4a3f496af5b56d80b8b4b19f9d))
+
 ## [0.2.0](https://github.com/remla25-team3/model-service/compare/v0.1.0...v0.2.0) (2025-05-18)
 
 
