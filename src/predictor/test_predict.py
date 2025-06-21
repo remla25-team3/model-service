@@ -19,7 +19,7 @@ class TestReviewSentimentPredictor(unittest.TestCase):
         """
         Tests that a clearly positive review returns a score > 0.5.
         """
-        review = "The food was absolutely wonderful"
+        review = "The food was delicious!"
         
         score = self.predictor.predict(review)
         
