@@ -27,4 +27,4 @@ ENV PORT=5000
 EXPOSE 5000
 
 # The command to run the application using a production-grade server (Gunicorn).
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "--workers", "2", "app:app"]
