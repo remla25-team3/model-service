@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/remla25-team3/model-service/compare/v0.3.0...v0.3.1) (2025-06-22)
+
+
+### Bug Fixes
+
+* Negative confidence correction ([#13](https://github.com/remla25-team3/model-service/issues/13)) ([5082e4c](https://github.com/remla25-team3/model-service/commit/5082e4c8f1885c62ae9148557534a03e57cb5859))
+
 ## [0.3.0](https://github.com/remla25-team3/model-service/compare/v0.2.0...v0.3.0) (2025-06-21)
 
 
