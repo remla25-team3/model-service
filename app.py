@@ -123,11 +123,19 @@ def predict():
         return jsonify({"error": "Missing 'review' key in request body"}), 400
     try:
         review_text = json_data['review']
-        score = predictor.predict(review_text)
-        sentiment_label = "positive" if score > 0.5 else "negative"
+        raw_score = predictor.predict(review_text)
+        
+        if raw_score > 0.5:
+            sentiment_label = "positive"
+            confidence = raw_score
+        else:
+            sentiment_label = "negative"
+            # For a negative prediction, the confidence is 1 minus the raw score
+            confidence = 1 - raw_score
+            
         response_payload = {
             "sentiment": sentiment_label,
-            "confidence_score": score,
+            "confidence_score": confidence,
             "review": review_text
         }
         return jsonify(response_payload), 200
