@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/remla25-team3/model-service/compare/v0.3.1...v0.3.2) (2025-06-22)
+
+
+### Bug Fixes
+
+* docker error + update readme ([#15](https://github.com/remla25-team3/model-service/issues/15)) ([875608c](https://github.com/remla25-team3/model-service/commit/875608c64b74102c4fe1e3e60709d16fd1a5ac73))
+
 ## [0.3.1](https://github.com/remla25-team3/model-service/compare/v0.3.0...v0.3.1) (2025-06-22)
 
 
