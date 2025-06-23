@@ -11,7 +11,7 @@ app.config.update({
     'ENV': os.getenv('FLASK_ENV', 'production'),
     'DEBUG': os.getenv('FLASK_DEBUG', 'False').lower() in ('true', '1'),
     'HOST': os.getenv('FLASK_HOST', '0.0.0.0'),
-    'PORT': int(os.getenv('FLASK_PORT', 5000))
+    'PORT': int(os.getenv('PORT', 5000))
 })
 
 # Logging Setup
@@ -29,12 +29,26 @@ logger.info(f"Service Version: {app_version}")
 swagger_template = {
     "swagger": "2.0",
     "info": {
-        "title": "REMLA Sentiment Analysis API (Team 3)",
-        "description": "API to predict the sentiment of restaurant reviews.",
+        "title": "Model Service: REMLA Team 3",
+        "description":  "Model Service APIs",
         "version": app_version # Use the automatically fetched version
     }
 }
-swagger = Swagger(app, template=swagger_template)
+# swagger = Swagger(app, template=swagger_template)
+swagger_config = {
+    "headers": [],
+    "specs_route": "/model/apidocs",
+    "specs": [
+        {
+            "endpoint": "apispec_1",
+            "route": "/model/apispec_1.json",
+            "rule_filter": lambda rule: True,
+            "model_filter": lambda tag: True
+        }
+    ],
+    "static_url_path": "/model/flasgger_static"
+}
+swagger = Swagger(app, template=swagger_template, config=swagger_config)
 
 # Model Loading
 logger.info("Initializing the ReviewSentimentPredictor...")
@@ -45,8 +59,10 @@ logger.info("Predictor initialized successfully.")
 @app.route("/health", methods=["GET"])
 def health_check():
     """
-    Checks the health of the service.
+    Health Check Endpoint
     ---
+    summary: Check service health
+    description: Returns the status of the model-service to verify it's running.
     tags:
       - Monitoring
     responses:
@@ -65,13 +81,15 @@ def health_check():
 @app.route("/version", methods=["GET"])
 def version():
     """
-    Returns the current version of the service.
+    Service Version Endpoint
     ---
+    summary: Get current service version
+    description: Returns the current version of the model-service, auto-read from the manifest file.
     tags:
       - Monitoring
     responses:
       200:
-        description: The service version, read automatically from the manifest file.
+        description: The service version details.
         schema:
           type: object
           properties:
@@ -85,23 +103,30 @@ def version():
 @app.route('/predict', methods=['POST'])
 def predict():
     """
-    Predicts the sentiment and confidence score of a review.
+    Sentiment Prediction Endpoint
     ---
+    summary: Predict sentiment of a restaurant review
+    description: |
+      Accepts a JSON payload containing a 'review' string and returns a
+      sentiment label (positive/negative) along with a confidence score.
+    tags:
+      - Prediction
     parameters:
-      - name: body
+      - name: review
         in: body
         required: true
+        description: The review text to analyze.
         schema:
           type: object
-          required: [review]
+          required:
+            - review
           properties:
             review:
               type: string
-              description: The review text to analyze.
               example: "The food was delicious!"
     responses:
       200:
-        description: The prediction result with sentiment and confidence score.
+        description: Prediction result with sentiment and confidence score.
         schema:
           type: object
           properties:
@@ -115,7 +140,21 @@ def predict():
             review:
               type: string
       400:
-        description: Bad Request (e.g., missing or invalid 'review' key).
+        description: Bad Request (missing or invalid 'review' key).
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Missing 'review' key in request body"
+      500:
+        description: Internal Server Error during prediction.
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "An internal error occurred during prediction."
     """
     json_data = request.get_json(silent=True)
     if not json_data or 'review' not in json_data:
