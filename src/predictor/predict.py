@@ -8,29 +8,23 @@ class ReviewSentimentPredictor:
     """Predicts sentiment probability from a single restaurant review."""
     def __init__(self):
         """
-        Initializes the predictor by downloading and loading the sentiment model
-        and the Bag-of-Words vectorizer from the v0.2.3 release.
+        Initializes the predictor by dynamically constructing the download URLs from
+        environment variables and then loading the models.
         """
-        # URLs pointing to the specific assets from the v0.2.3 release
-        model_url = 'https://github.com/remla25-team3/model-training/releases/download/v0.2.3/sentiment_model.pkl'
-        vectorizer_url = 'https://github.com/remla25-team3/model-training/releases/download/v0.2.3/bow_sentiment_model.pkl'
+        # Read configuration from environment variables, with sensible defaults.
+        base_url = os.getenv('RESOURCE_URL', 'https://github.com/remla25-team3/model-training/releases/download/')
+        model_version = os.getenv('MODEL_VERSION', 'v0.2.3')
+        model_filename = os.getenv('MODEL', 'sentiment_model.pkl')
+        vectorizer_filename = os.getenv('CV', 'bow_sentiment_model.pkl')
 
-        # Define model file names
-        self.model_filename = "sentiment_model.pkl"
-        self.vectorizer_filename = "bow_sentiment_model.pkl"
+        # Construct the full URLs dynamically
+        model_url = f"{base_url.strip('/')}/{model_version}/{model_filename}"
+        vectorizer_url = f"{base_url.strip('/')}/{model_version}/{vectorizer_filename}"
 
         model_dir = os.getenv("MODEL_DIR", "/tmp/models")
 
-        self.model = self.download_and_load(model_url, model_dir, self.model_filename)
-        self.vectorizer = self.download_and_load(vectorizer_url, model_dir, self.vectorizer_filename)
-
-        # # Load the prediction model from the URL
-        # model_file = urllib.request.urlopen(model_url)
-        # self.model = joblib.load(model_file)
-
-        # # Load the BoW vectorizer from the URL
-        # vectorizer_file = urllib.request.urlopen(vectorizer_url)
-        # self.vectorizer = joblib.load(vectorizer_file)
+        self.model = self.download_and_load(model_url, model_dir, model_filename)
+        self.vectorizer = self.download_and_load(vectorizer_url, model_dir, vectorizer_filename)
 
     def download_and_load(self, url: str, path: str, filename: str):
         """
