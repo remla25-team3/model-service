@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/remla25-team3/model-service/compare/v0.3.2...v0.3.3) (2025-06-23)
+
+
+### Bug Fixes
+
+* env variables to ensure modularity ([#17](https://github.com/remla25-team3/model-service/issues/17)) ([5337be8](https://github.com/remla25-team3/model-service/commit/5337be85c21c56809182b510d74c644a618830f3))
+
 ## [0.3.2](https://github.com/remla25-team3/model-service/compare/v0.3.1...v0.3.2) (2025-06-22)
 
 
