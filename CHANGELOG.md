@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/remla25-team3/model-service/compare/v0.3.4...v0.4.0) (2025-06-23)
+
+
+### Features
+
+* improved api docs ([fa057e2](https://github.com/remla25-team3/model-service/commit/fa057e2b564115ce0876ff4b21c94def1fb2f3c4))
+
 ## [0.3.4](https://github.com/remla25-team3/model-service/compare/v0.3.3...v0.3.4) (2025-06-23)
 
 
