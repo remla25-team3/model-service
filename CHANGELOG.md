@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/remla25-team3/model-service/compare/v0.4.0...v0.4.1) (2025-06-24)
+
+
+### Bug Fixes
+
+* Fix path ([#23](https://github.com/remla25-team3/model-service/issues/23)) ([72ee0da](https://github.com/remla25-team3/model-service/commit/72ee0dabb7a8702ff58ea9cb8b69618f8fc2e4c6))
+
 ## [0.4.0](https://github.com/remla25-team3/model-service/compare/v0.3.4...v0.4.0) (2025-06-23)
 
 
