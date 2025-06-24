@@ -29,10 +29,11 @@ logger.info(f"Service Version: {app_version}")
 swagger_template = {
     "swagger": "2.0",
     "info": {
-        "title": "Model Service: REMLA Team 3",
-        "description":  "Model Service APIs",
-        "version": app_version # Use the automatically fetched version
-    }
+        "title":       "Model Service: REMLA Team 3",
+        "description": "Model Service APIs",
+        "version":     app_version,
+    },
+    "basePath": "/model",
 }
 # swagger = Swagger(app, template=swagger_template)
 swagger_config = {
