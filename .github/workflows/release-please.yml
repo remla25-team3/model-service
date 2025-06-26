@@ -85,3 +85,4 @@ jobs:
             git push origin "$CANARY_TAG"
             
             echo "Created and pushed tag: $CANARY_TAG"
+            
