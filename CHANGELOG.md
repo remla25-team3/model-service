@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/remla25-team3/model-service/compare/v0.4.1...v0.5.0) (2025-06-26)
+
+
+### Features
+
+* add support for canary releases in the release workflow ([ecfed7f](https://github.com/remla25-team3/model-service/commit/ecfed7f67abd035fda6916edc9caf006f8c3dd39))
+
+
+### Bug Fixes
+
+* test commit ([407fdc5](https://github.com/remla25-team3/model-service/commit/407fdc5aebd88e0532d4b3211f37798d420e27fa))
+* update canary release tagging logic in workflow ([4e692db](https://github.com/remla25-team3/model-service/commit/4e692dbf04616c0ecb0f0b1a0ec2a0380f13aa0d))
+
 ## [0.4.1](https://github.com/remla25-team3/model-service/compare/v0.4.0...v0.4.1) (2025-06-24)
 
 
